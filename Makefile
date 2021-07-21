@@ -2740,8 +2740,8 @@ tags: $(FOUND_SOURCE_FILES)
 	mv tags+ tags
 
 cscope.out: $(FOUND_SOURCE_FILES)
-	$(QUIET_GEN)$(RM) cscope* && \
-	echo $(FOUND_SOURCE_FILES) | xargs cscope -b
+	$(QUIET_GEN)$(RM) cscope.out && \
+	echo $(FOUND_SOURCE_FILES) | xargs cscope -f$@ -b
 
 .PHONY: cscope
 cscope: cscope.out
@@ -3215,7 +3215,7 @@ clean: profile-clean coverage-clean cocciclean
 	$(RM) $(HCC)
 	$(RM) -r bin-wrappers $(dep_dirs) $(compdb_dir) compile_commands.json
 	$(RM) -r po/build/
-	$(RM) *.pyc *.pyo */*.pyc */*.pyo $(GENERATED_H) $(ETAGS_TARGET) tags cscope*
+	$(RM) *.pyc *.pyo */*.pyc */*.pyo $(GENERATED_H) $(ETAGS_TARGET) tags cscope.out
 	$(RM) -r .dist-tmp-dir .doc-tmp-dir
 	$(RM) $(GIT_TARNAME).tar.gz
 	$(RM) $(htmldocs).tar.gz $(manpages).tar.gz
