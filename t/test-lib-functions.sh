@@ -1718,3 +1718,11 @@ test_region () {
 test_readlink () {
 	perl -le 'print readlink($_) for @ARGV' "$@"
 }
+
+# Test a with a given number of COLUMNS in the environment.
+test_with_columns () {
+	local columns=$1
+	shift
+
+	COLUMNS=$columns "$@"
+}
