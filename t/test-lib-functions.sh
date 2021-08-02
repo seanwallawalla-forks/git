@@ -1724,5 +1724,12 @@ test_with_columns () {
 	local columns=$1
 	shift
 
+	if ! is_git_command_name "$@"
+	then
+		echo >&7 "test_with_columns: only 'git' is allowed: $*"
+		return 1
+	fi
+
+	GIT_TEST_COLUMNS= \
 	COLUMNS=$columns "$@"
 }
