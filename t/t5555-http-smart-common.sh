@@ -1,3 +1,5 @@
+#!/bin/sh
+
 test_description='test functionality common to smart fetch & push'
 
 . ./test-lib.sh
